@@ -27,6 +27,7 @@ public class CustomSimpleUrlAuthenticationSuccessHandler extends SimpleUrlAuthen
 
         clearAuthenticationAttributes(request); // 세션에 임시로 저장되었던 인증 관련 속성 정리
 
+        // 로그인 페이지로 오기 전에 다른 페이지에 접근하기위한 시도가 있었다면 그 url 요청을 저장 해서 redirect 아니면 default
         String targetUrl = savedRequest != null ? savedRequest.getRedirectUrl() : getDefaultTargetUrl();
 
         targetUrl = Ut.url.modifyQueryParam(targetUrl, "msg", Ut.url.encodeWithTtl("환영합니다."));

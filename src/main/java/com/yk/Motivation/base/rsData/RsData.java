@@ -28,7 +28,7 @@ public class RsData<T> {
         return !isSuccess();
     }
 
-    public Optional<RsData<T>> optional() {
+    public Optional<RsData<T>> optional() { // map 쓰고 싶어서 Optional 로 만듦
         return Optional.of(this);
     }
 }

@@ -108,7 +108,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    private WebExpressionAuthorizationManager accessOf(String expressionString) {
+    private WebExpressionAuthorizationManager accessOf(String expressionString) { // 문제 해결을 위한 코드
         DefaultHttpSecurityExpressionHandler expressionHandler = new DefaultHttpSecurityExpressionHandler();
         expressionHandler.setApplicationContext(context);
         WebExpressionAuthorizationManager authorization = new WebExpressionAuthorizationManager(expressionString);
@@ -117,7 +117,7 @@ public class SecurityConfig {
         return authorization;
     }
 
-    private AntPathRequestMatcher[] requestMatchersOf(String... patterns) {
+    private AntPathRequestMatcher[] requestMatchersOf(String... patterns) { // 문제 해결을 위한 코드
         return Stream.of(patterns)
                 .map(AntPathRequestMatcher::new)
                 .toArray(AntPathRequestMatcher[]::new);

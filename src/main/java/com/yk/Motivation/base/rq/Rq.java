@@ -246,11 +246,11 @@ public class Rq {
         return req.getRequestURI() + (Ut.str.hasLength(queryString) ? "?" + queryString : "");
     }
 
-    public String getEncodedCurrentUrl() {
+    public String getEncodedCurrentUrl() { // getCurrentUrl 의 공백을 %20 으로 엔코딩
         return Ut.url.encode(getCurrentUrl());
     }
 
-    public String getParam(String paramName, String defaultValue) {
+    public String getParam(String paramName, String defaultValue) { //  URL의 쿼리 문자열이나 POST 요청의 body 등에서 지정된 paramName에 해당하는 파라미터 값을 반환
         String value = req.getParameter(paramName);
 
         if (value == null) {
@@ -260,7 +260,7 @@ public class Rq {
         return value;
     }
 
-    public String getPathVariable(int index) {
+    public String getPathVariable(int index) { // url Path 에서 특정 섹션을 가져오기 
         return getCurrentUrlPath().split("/")[index + 1];
     }
 
@@ -268,7 +268,7 @@ public class Rq {
         return Long.parseLong(getPathVariable(index));
     }
 
-    public String getSuitableListByTagPageBaseUrlByCurrentUrl(String domainName) {
+    public String getSuitableListByTagPageBaseUrlByCurrentUrl(String domainName) { // 템플릿(detail 에서 목록으로 이동 할 때) 에서 usr/article ? post 등... 동적으로 쓰려고
         String currentUrl = getCurrentUrlPath();
 
         String listByTagPageBaseUrl = "/usr/" + domainName + "/listByTag";

@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class CustomAccessDeniedHandler extends AccessDeniedHandlerImpl {
 
+    // 굳이 굳이 이렇게 하는건 EmailNotVerifiedAccessDeniedException 으로 exception 을 터쳐도 AccessDeniedException 으로 귀결 되더라...
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         if (accessDeniedException instanceof EmailNotVerifiedAccessDeniedException) {

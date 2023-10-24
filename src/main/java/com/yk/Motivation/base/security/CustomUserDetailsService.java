@@ -21,6 +21,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("username(%s) not found".formatted(username)));
 
+        // 쇼설 로그인을 판별하는 부분
+        // 이 부분을 제외하면 spring security UserDetailsService 의 일반적인 표준 동작과 다르지 않음.
         if (member.isSocialMember()) throw new UsernameNotFoundException("social login user");
 
         return new User(member.getUsername(), member.getPassword(), member.getGrantedAuthorities());

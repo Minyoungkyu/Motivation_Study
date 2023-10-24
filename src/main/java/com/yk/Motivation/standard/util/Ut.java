@@ -246,6 +246,8 @@ public class Ut {
 
     public static class url {
 
+        // URLEncoder 에 의해 공백이 + 로 encoding 되었을 때, 다시 %20 으로 encoding
+        // 즉, 공백을 %20 으로 encoding
         public static String encode(String message) {
             String tempReplacement = "TEMP_PLUS";
             message = message.replace("+", tempReplacement);
